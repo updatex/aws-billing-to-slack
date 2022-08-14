@@ -5,8 +5,8 @@ plugins:
 provider:
   name: aws
   # Sane defaults, easy for multi-account/multi-region organizations
-  profile: ${param:aws_profile, env:AWS_PROFILE, 'default'}
-  region: ${env:AWS_REGION, env:AWS_DEFAULT_REGION, 'us-east-1'}
+  profile: ${param:aws_profile, env:AWS_PROFILE, 'kylindev'}
+  region: ${env:AWS_REGION, env:AWS_DEFAULT_REGION, 'eu-east-1'}
   runtime: python3.9
 
   iam:
@@ -34,7 +34,7 @@ functions:
 
     events:
       # Every day at 15:00 UTC / 10am CDT
-      - schedule: cron(0 15 * * ? *)
+      - schedule: cron(0 2 * * ? *)
 
     environment:
       GROUP_BY: ${param:group, 'SERVICE'}
